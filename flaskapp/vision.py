@@ -1,8 +1,9 @@
 import io
+from PIL import Image, ImageDraw
 from google.cloud import vision_v1p3beta1 as vision # beta version
 
 
-def detect_text(path):
+def detect_text(path, draw=True):
     """Detects handwritten characters in a local image.
 
     Args:
@@ -41,21 +42,18 @@ def detect_text(path):
                 # print('Paragraph confidence: {}'.format(paragraph.confidence))
                 # print('------')
 
-    # if draw:
-    #     im = Image.open('./images/{}'.format(path))
-    #     draw = ImageDraw.Draw(im)
-    #     for page in response.full_text_annotation.pages:
-    #         for block in page.blocks:
-    #             for paragraph in block.paragraphs:
-    #                 box = paragraph.bounding_box.vertices
-    #                 draw.polygon([
-    #                     box[0].x, box[0].y,
-    #                     box[1].x, box[1].y,
-    #                     box[2].x, box[2].y,
-    #                     box[3].x, box[3].y], None, 'red')
-        # im.show()
-        # im.save('./results/{}'.format(path), "JPEG")
+    if draw:
+        im = Image.open(path)
+        draw = ImageDraw.Draw(im)
+        for page in response.full_text_annotation.pages:
+            for block in page.blocks:
+                for paragraph in block.paragraphs:
+                    box = paragraph.bounding_box.vertices
+                    draw.polygon([
+                        box[0].x, box[0].y,
+                        box[1].x, box[1].y,
+                        box[2].x, box[2].y,
+                        box[3].x, box[3].y], None, 'red')
+        im.save(path)
 
     return text_response
-
-# output = detect_text('bad3.jpg',draw=True)

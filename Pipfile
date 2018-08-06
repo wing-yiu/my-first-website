@@ -8,6 +8,7 @@ requests = "*"
 flask = "*"
 python-dotenv = "*"
 google-cloud-vision = "*"
+pillow = "*"
 
 [requires]
 python_version = "3.6"
