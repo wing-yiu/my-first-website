@@ -1,1 +1,1 @@
-web: gunicorn flaskapp.wsgi
+web: python flaskapp.hello.py
