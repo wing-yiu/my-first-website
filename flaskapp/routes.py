@@ -4,6 +4,7 @@ from flask import Flask, render_template, request
 from werkzeug import secure_filename
 
 from flaskapp import app
+from flaskapp.vision import detect_text
 
 @app.route('/')
 @app.route('/index')
@@ -16,6 +17,7 @@ def index():
 def upload():
    return render_template('upload.html')
 
+
 @app.route('/ocr', methods=['GET', 'POST'])
 def upload_file():
    if request.method == 'POST':
@@ -23,3 +25,11 @@ def upload_file():
       filename = secure_filename(f.filename)
       f.save(os.path.join(app.config['UPLOADED_PHOTOS_DEST'], filename))
       return 'file uploaded successfully'
+   
+@app.route('/ocr2', methods=['GET', 'POST'])
+def ocr_file():
+   if request.method == 'POST':
+      f = request.files['file']
+      filename = secure_filename(f.filename)
+      f.save(os.path.join(app.config['UPLOADED_PHOTOS_DEST'], filename))
+      return detect_text(os.path.join(app.config['UPLOADED_PHOTOS_DEST'], filename))
