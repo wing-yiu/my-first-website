@@ -1,1 +1,1 @@
-web: python flaskapp/hello.py
+web: gunicorn flaskapp:app
