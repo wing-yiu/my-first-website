@@ -3,9 +3,7 @@ url = "https://pypi.python.org/simple"
 verify_ssl = true
 
 [packages]
-django = "*"
 gunicorn = "*"
-django-heroku = "*"
 requests = "*"
 flask = "*"
 python-dotenv = "*"
