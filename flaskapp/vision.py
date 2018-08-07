@@ -25,7 +25,7 @@ def detect_text(path, draw=True):
 
     response = client.document_text_detection(image=image,
                                               image_context=image_context)
-    
+
     text_response = ""
 
     for page in response.full_text_annotation.pages:
@@ -35,25 +35,25 @@ def detect_text(path, draw=True):
                 for word in paragraph.words:
                     for symbol in word.symbols:
                         text = text + symbol.text
-                text_response += (text + '\n')
-                text_response += 'Paragraph confidence: {}\n'.format(paragraph.confidence)
-                text_response += '------\n'
+                text_response += (text + '<br>')
+                text_response += 'Paragraph confidence: {}<br>'.format(paragraph.confidence)
+                text_response += '------<br>'
                 # print(text)
                 # print('Paragraph confidence: {}'.format(paragraph.confidence))
                 # print('------')
 
-    if draw:
-        im = Image.open(path)
-        draw = ImageDraw.Draw(im)
-        for page in response.full_text_annotation.pages:
-            for block in page.blocks:
-                for paragraph in block.paragraphs:
-                    box = paragraph.bounding_box.vertices
-                    draw.polygon([
-                        box[0].x, box[0].y,
-                        box[1].x, box[1].y,
-                        box[2].x, box[2].y,
-                        box[3].x, box[3].y], None, 'red')
-        im.save(path)
+    # if draw:
+    #     im = Image.open(path)
+    #     draw = ImageDraw.Draw(im)
+    #     for page in response.full_text_annotation.pages:
+    #         for block in page.blocks:
+    #             for paragraph in block.paragraphs:
+    #                 box = paragraph.bounding_box.vertices
+    #                 draw.polygon([
+    #                     box[0].x, box[0].y,
+    #                     box[1].x, box[1].y,
+    #                     box[2].x, box[2].y,
+    #                     box[3].x, box[3].y], None, 'red')
+    #     im.save(path)
 
     return text_response
