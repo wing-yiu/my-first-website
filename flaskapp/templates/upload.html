@@ -1,10 +1,34 @@
 <html>
    <body>
    
-      <form action = "/ocr2" method = "POST" 
-         enctype = "multipart/form-data">
-         <input type = "file" name = "file" />
-         <input type = "submit"/>
+      <!--<form action = "/ocr" method = "POST" -->
+         <!--enctype = "multipart/form-data">-->
+         <!--<input type = "file" name = "file" />-->
+         <!--<input type = "upload"/>-->
+      <!--</form>-->
+   
+      <form action = "" method = "POST" enctype="multipart/form-data">
+          {{form.hidden_tag()}}
+         <fieldset>
+            <legend>Passport Details</legend>
+            
+            <div style = font-size:20px; font-weight:bold; margin-left:150px;>
+               {{ form.name.label }}<br>
+               {{ form.name }}
+               <br>
+               
+               {{ form.gender.label }} {{ form.gender }}
+               
+               <br>
+               
+               {{ form.file.label }}<br>
+               {{ form.file }}
+               <br>
+               
+               {{ form.submit }}
+            </div>
+            
+         </fieldset>
       </form>
       
    </body>
