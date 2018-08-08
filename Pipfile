@@ -6,6 +6,7 @@ verify_ssl = true
 gunicorn = "*"
 requests = "*"
 flask = "*"
+Flask-WTF==0.14.2
 python-dotenv = "*"
 google-cloud-vision = "*"
 pillow = "*"

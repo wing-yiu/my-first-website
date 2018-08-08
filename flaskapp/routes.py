@@ -1,6 +1,6 @@
 import os
 
-from flask import Flask, render_template, request, flash
+from flask import Flask, render_template, request, flash, jsonify
 from werkzeug import secure_filename
 
 from flaskapp import app
@@ -16,6 +16,11 @@ def index():
     return render_template('index.html',
                            title='Home',
                            user=user)
+
+
+@app.route('/upload2')
+def upload2():
+    return jsonify({'name': 'wy', 'prop': 'a value'})
 
 
 @app.route('/upload', methods=['GET', 'POST'])
@@ -38,7 +43,6 @@ def upload():
                                    ocr_results=ocr_text)
 
         else:
-            flash('ERROR')
             return render_template('upload.html', form=form)
     return render_template('upload.html', form=form)
 
