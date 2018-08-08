@@ -1,35 +1,57 @@
 <html>
-   <body>
+
+    <body>
    
       <!--<form action = "/ocr" method = "POST" -->
          <!--enctype = "multipart/form-data">-->
          <!--<input type = "file" name = "file" />-->
          <!--<input type = "upload"/>-->
       <!--</form>-->
-   
+
       <form action = "" method = "POST" enctype="multipart/form-data">
           {{form.hidden_tag()}}
-         <fieldset>
-            <legend>Passport Details</legend>
-            
-            <div style = font-size:20px; font-weight:bold; margin-left:150px;>
-               {{ form.name.label }}<br>
-               {{ form.name }}
-               <br>
-               
-               {{ form.gender.label }} {{ form.gender }}
-               
-               <br>
-               
-               {{ form.file.label }}<br>
-               {{ form.file }}
-               <br>
-               
-               {{ form.submit }}
-            </div>
+          <fieldset>
+              
+              <legend>Passport Details</legend>
+              
+              <div style = font-size:20px; font-weight:bold; margin-left:150px;>
+                  {{ form.surname.label }}
+                  <br>
+                  {{ form.surname }}
+                  <br>
+                  {{ form.name.label }}
+                  <br>
+                  {{ form.name }}
+                  <br>
+                  {{ form.gender.label }} {{ form.gender }}
+                  <br>
+                  {{ form.birth_date.label }}
+                  <br>
+                  {{ form.birth_date }}
+                  <br>
+                  {{ form.passport_num.label }}
+                  <br>
+                  {{ form.passport_num }}
+                  <br>
+                  {{ form.nationality.label }}
+                  <br>
+                  {{ form.nationality }}
+                  <br>
+                  {{ form.expiration_date.label }}
+                  <br>
+                  {{ form.expiration_date }}
+                  <br>
+                  {{ form.file.label }}
+                  <br>
+                  {{ form.file }}
+                  <br><br>
+                  {{ form.submit }}
+              </div>
             
          </fieldset>
+          
       </form>
       
-   </body>
+    </body>
+
 </html>
