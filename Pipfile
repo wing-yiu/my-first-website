@@ -6,10 +6,14 @@ verify_ssl = true
 gunicorn = "*"
 requests = "*"
 flask = "*"
-Flask-WTF==0.14.2
 python-dotenv = "*"
 google-cloud-vision = "*"
 pillow = "*"
+pytesseract = "*"
+tensorflow = "*"
+easydict = "*"
+pyyaml = "*"
+opencv-python = "*"
 
 [requires]
 python_version = "3.6"
